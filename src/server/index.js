@@ -15,6 +15,9 @@ const router = new KoaRouter();
 new KoaPug({
   app,
   viewPath: path.join(__dirname, 'views'),
+  locals: {
+    host: config.host,
+  }
 })
 
 app.use(mount('/assets', serve(path.join(__dirname, 'assets'))));
