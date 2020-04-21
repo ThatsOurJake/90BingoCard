@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.bingo-card {
+  margin-bottom: 12px;
+}
+
+h3, p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+td {
+  padding: 0;
+  margin: 0;
+  border: 0px none;
+}
+
+.bingo-number {
+  width: 4vh;
+  height: 4vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #000;
+  cursor: pointer;
+
+  background-color: #fff;
+}
+
+.bingo-number p {
+  font-size: 0.8em;
+}
+
+.bingo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+html {
+  background-color: #eaeaea;
+}

@@ -1,0 +1,49 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Quicksand&display=swap")
+    link(rel="stylesheet", href="./assets/style.css")
+    title Bingo
+    body
+      div(class="bingo-wrapper")
+        h3 Bingo!
+        each card in locals.cards
+          div(class="bingo-card")
+            table
+              tbody
+                each row in card.numbers
+                  tr
+                    each number in row
+                      td
+                        div(class="bingo-number")
+                          p= number
+    script.
+      const bingoNumbers = document.getElementsByClassName('bingo-number');
+      const dobberColour = "#{dobber}";
+
+      for (let i = 0; i < bingoNumbers.length; i++) {
+        const element = bingoNumbers[i];
+
+        element.addEventListener('click', () => {
+          if (!element.dobbed) {
+            element.style.backgroundColor = dobberColour;
+            element.dobbed = true;
+          } else {
+            element.style.backgroundColor = '#fff';
+            element.dobbed = false;
+          }
+        });
+
+        element.addEventListener('mouseenter', () => {
+          if (!element.dobbed) {
+            element.style.backgroundColor = dobberColour;
+          }
+        });
+
+        element.addEventListener('mouseleave', () => {
+          if (!element.dobbed) {
+            element.style.backgroundColor = '#fff';
+          }
+        });
+      }
