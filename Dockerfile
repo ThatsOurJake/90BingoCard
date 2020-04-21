@@ -31,7 +31,7 @@ RUN npm install --only=production
 
 FROM node:12.13-alpine
 
-WORKDIR /bingo
+WORKDIR /90Bingo
 
 COPY --from=base /app/package.json ./package.json
 COPY --from=build /app/dist .
