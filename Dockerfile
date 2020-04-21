@@ -26,7 +26,7 @@ RUN npm install --only=production
 
 FROM node:12.13-alpine
 
-WORKDIR /90Bingo
+WORKDIR /BingoCard
 
 COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/dist .
