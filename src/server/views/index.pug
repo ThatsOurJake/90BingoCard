@@ -18,6 +18,8 @@ html(lang="en")
                       td
                         div(class="bingo-number")
                           p= number
+        p(class="t-meta") ~ #{uuid} ~
+    script(src="//" + locals.host + "/assets/axios.min.js")
     script.
       const bingoNumbers = document.getElementsByClassName('bingo-number');
       const dobberColour = "#{dobber}";
@@ -47,3 +49,10 @@ html(lang="en")
           }
         });
       }
+
+      window.onunload = (event) => {
+        const url = "//#{host}/leave/#{uuid}";
+        if (navigator && navigator.sendBeacon) {
+          navigator.sendBeacon(url, {});
+        }
+      };

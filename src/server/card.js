@@ -14,6 +14,12 @@ class Card {
       return prev + acc.find(x => x != undefined).length;
     }, 0);
   }
+
+  getNumbers() {
+    return this.numbers.reduce((acc, current) => {
+      return acc.concat(current);
+    }, []).filter(x => x != undefined).sort((a, b) => a - b);
+  }
 };
 
 const countElementsInSet = (set) => {
