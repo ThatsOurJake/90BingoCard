@@ -1,0 +1,35 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Quicksand&display=swap")
+    link(rel="stylesheet", href="//" + locals.host + "/assets/style.css")
+    title Dashboard
+  body
+    h3 Dashboard
+    p Here are the current bingo cards with UUIDs
+    div(class="hidden" id="card-template")
+      div(id="user-info")
+        p UserId: <b>${user.userId}</b>
+        div
+          ul
+            li ${user.cards[0]}
+            li ${user.cards[1]}
+            li ${user.cards[2]}
+            li ${user.cards[3]}
+            li ${user.cards[4]}
+            li ${user.cards[5]}
+    div(id="users")
+    script(src="//" + locals.host + "/assets/axios.min.js")
+    script.
+      const createCard = (user) => {
+        const template = document.getElementById('card-template').innerHTML;
+        return eval('`'+ template +'`')
+      }
+
+      setInterval(() => axios.get('//#{host}/api/dashboard')
+        .then(({ data }) => {
+          const usersWrapper = document.getElementById('users');
+          const newHtml = data.reduce((acc, current) => acc += createCard(current), '');
+          usersWrapper.innerHTML = newHtml;
+        }), 1000);
