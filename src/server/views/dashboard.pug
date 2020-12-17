@@ -20,7 +20,7 @@ html(lang="en")
             li ${user.cards[4]}
             li ${user.cards[5]}
     div(id="users")
-    script(src="//" + locals.host + "/assets/axios.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js")
     script.
       const createCard = (user) => {
         const template = document.getElementById('card-template').innerHTML;

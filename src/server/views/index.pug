@@ -19,7 +19,6 @@ html(lang="en")
                         div(class="bingo-number")
                           p= number
         p(class="t-meta") ~ #{uuid} ~
-    script(src="//" + locals.host + "/assets/axios.min.js")
     script.
       const bingoNumbers = document.getElementsByClassName('bingo-number');
       const dobberColour = "#{dobber}";
