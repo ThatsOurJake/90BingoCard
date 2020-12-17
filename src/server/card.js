@@ -18,7 +18,7 @@ class Card {
   getNumbers() {
     return this.numbers.reduce((acc, current) => {
       return acc.concat(current);
-    }, []).filter(x => x != undefined).sort((a, b) => a - b);
+    }, []).filter(x => x != undefined);
   }
 };
 
