@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid';
 import config from './config';
 import genCards from './card';
 import getDobber from './dobber';
+import logger from './logger';
 
 const app = new Koa();
 const router = new KoaRouter();
@@ -24,6 +25,11 @@ new KoaPug({
   locals: {
     host: config.host,
   },
+})
+
+app.use(async (ctx, next) => {
+  await next();
+  logger.info('Outgoing Response', { req: ctx.req, res: ctx.res });
 })
 
 app.use(mount('/assets', serve(path.join(__dirname, 'assets'))));
@@ -55,5 +61,5 @@ router.post('/leave/:id', ctx => {
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(config.port, () => {
-  console.log(`Listening on port: ${config.port}`);
+  logger.info(`Listening on port: ${config.port}`);
 });
